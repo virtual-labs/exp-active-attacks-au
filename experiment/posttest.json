@@ -2,37 +2,38 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Which of the following statements is true about combining passive and active attacks? ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Passive attacks are less dangerous than active attacks",
+        "b": "Active attacks are less detectable than passive attacks.",
+        "c": "Combining passive and active attacks can increase the success rate of an attack.",
+        "d": "Combining passive and active attacks can only be done by expert hackers."
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
+      
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which of the following best describes combining active and passive attacks in an ongoing computer in a network? ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Eavesdropping on network traffic",
+        "b": "Installing malware on a system",
+        "c": "Modifying data in transit",
+        "d": "Scanning for open ports"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+     "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is a type of replay attack?",
+      "answers": {
+        "a": "Brute-force attack",
+        "b": "SQL Injection",
+        "c": "DNS Spoofing",
+        "d": "Session hijacking"
       },
-      "correctAnswer": "c",
+       
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]

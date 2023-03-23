@@ -2,37 +2,38 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "The nonces are primarily used in the request and response messages. What is the purpose of these nonces? ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "eliminating certain replay attacks.",
+        "b": "eliminating certain DoS attacks.",
+        "c": "eliminating all attacks possible.",
+        "d": "identifying the user."
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
+      
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which of the following statements describes a replay attack? ",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "An attacker modifies the contents of a legitimate message in transit.",
+        "b": "An attacker eavesdrops on communication to steal sensitive data.",
+        "c": "An attacker intercepts a message and retransmits it multiple times.",
+        "d": "An attacker sends a fake message to a legitimate user"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+     "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the main objective of combining passive?",
+      "answers": {
+        "a": "To make the attack more detectable",
+        "b": "To boost the attacker's chances of success",
+        "c": "To shorten the attack’s preparation period",
+        "d": "reducing the victim’s exposure to the attack’s effects "
       },
-      "correctAnswer": "c",
+       
+      "correctAnswer": "b",
       "difficulty": "beginner"
     }
   ]
