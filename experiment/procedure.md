@@ -1,28 +1,9 @@
 ### Procedure
 
-1. Student has to choose a channel to intercept. Here, the user is the hacker.
-
-2. Click “Start” to start the experiment.
-
-3. Observe the connection from the selected channel to server being changed to selected channel to hacker's computer then to the server. Observe the connection message in the terminal at bottom.
-
-4. Click “Next” to continue.
-
-5. Observe the packet being sent from the client to server being intercepted by the hacker's computer. Now that the hacker has intercepted a packet, he can use this to communicate with the server on behalf of the client. The intercepted packet content is shown in the terminal.
-
-6. To ensure that the interception is not detected, it is crucial that the hacker retransmits the packet as soon as possible. In the experiment, click on the corresponding message under the 'Respond' section in the server. 
-
-7. Observe the packet being sent from the hacker to the server on behalf of the user.
-
-8. Click on 'Next' to send a response back to the user from the server. Note that this packet will not actually reach the user, it will be intercepted by the hacker.
-
-9. Observe the username and password being transmitted back to the client in the intercepted packet content displayed in the terminal.
-
-10. To avoid detection, click on the button with the corresponding port number under the 'Respond' section under hacker within 10 seconds.
-
-11. Observe the packet being sent from the hacker to the client on behalf of the server.
-
-12. Copy the intercepted username and password and paste it in the corresponding text fields on the screen.
-
-13. Click on “Verify”. The experiment is successful if both the username and password that the hacker intercepted are correct.
-
+1. A TCP SYN Flood attack floods the network with connection requests, causing servers to wait for confirmation messages.
+2. Start by selecting a free port and sending a SYN message.
+3. Do not acknowledge the received acknowledgements, leading to the closure of the initiated connections.
+4. The goal is to overwhelm at least one server by occupying all available ports, rendering it inaccessible to other users.
+5. Once you've successfully overwhelmed a server, click "Verify" to finish the experiment.
+6. Hover over a port to view its port number.
+7. To accept acknowledgements, access the 'Respond' section on the server and choose the appropriate color and port number.
