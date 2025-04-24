@@ -1,6 +1,3 @@
 ### Aim of the experiment
 
-To understand how to combine passive and active attacks to obtain
-information. This exercise serves as a simulation of a real-world scenario
-wherein a combination of attacks is used to obtain access to confidential
-information
+To understand and analyze TCP SYN Flood attacks, examine their impact on network resources, and explore mitigation techniques. The experiment demonstrates how attackers exploit the TCP three-way handshake to overwhelm a server’s resources.
