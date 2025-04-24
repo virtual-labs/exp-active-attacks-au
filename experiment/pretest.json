@@ -25,7 +25,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "What is the main objective of combining passive?",
+      "question": "What is the main objective of combining passive and active attacks in a network?",
       "answers": {
         "a": "To make the attack more detectable",
         "b": "To boost the attacker's chances of success",
