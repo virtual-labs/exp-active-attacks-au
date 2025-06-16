@@ -1,25 +1,30 @@
 ### Procedure
 
-1. **Understand the Attack Mechanism**  
-   A TCP SYN Flood attack works by sending a large number of SYN requests to a server, without completing the TCP handshake. This keeps the server’s connection table full, eventually preventing legitimate users from accessing the server.
+The following steps outline the procedure for simulating a TCP SYN Flood attack:
 
-2. **Initiate the Attack**  
-   Select an available (free) port on the attacker machine and send a **SYN** message to the server. This simulates the start of a TCP connection.
+1.  **Understand the Attack Mechanism**:
+    *   A TCP SYN Flood attack exploits the TCP three-way handshake.
+    *   The attacker sends many SYN requests to a server but never sends the final ACK packet.
+    *   This leaves many "half-open" connections, which consumes the server's resources and prevents legitimate users from connecting.
+    *   **Expected Outcome**: The server's connection table will be filled with half-open connections, making it unresponsive.
 
-3. **Avoid Completing the Handshake**  
-   Do not respond to the server’s **SYN-ACK** replies with an **ACK**. This incomplete handshake causes the server to leave the connection half-open.
+2.  **Initiate the Attack**:
+    *   Select an available (free) port on the attacker machine.
+    *   Send a **SYN** message from the attacker's port to a server port to begin the TCP handshake.
 
-4. **Overwhelm the Server**  
-   Continue sending SYN messages without acknowledgments. As the server accumulates half-open connections, its available ports become occupied.
+3.  **Overwhelm the Server**:
+    *   Continuously send SYN messages to the server from different source ports.
+    *   Do not respond to the server's **SYN-ACK** replies. This is crucial for leaving connections half-open.
 
-5. **Observe the Impact**  
-   The goal is to overwhelm the server by occupying all available connection slots, making it temporarily inaccessible to other users.
+4.  **Observe and Verify the Impact**:
+    *   As the attack continues, the server's available connection slots will be exhausted.
+    *   Attempt to make a legitimate connection to the server. You should observe that the server is unresponsive.
+    *   Once the server is unresponsive, click on **"Verify"** to confirm that the Denial of Service attack was successful.
 
-6. **Verify the Outcome**  
-   Once the server becomes unresponsive due to the flood, click on **"Verify"** to confirm that the attack was successful.
+5.  **Monitor Port Status**:
+    *   Hover over any port on the server to view its port number and current connection status (e.g., `SYN_RECV`).
 
-7. **View Port Details**  
-   Hover over any port to see its port number and current connection status.
-
-8. **Optional: Simulate Normal Behavior**  
-   To simulate legitimate connections, access the **'Respond'** section on the server. Choose the correct **color** and **port number** to send an acknowledgment (**ACK**) and complete the handshake for selected requests.
+6.  **Simulate Normal Behavior (Optional)**:
+    *   To understand the contrast with a normal connection, you can complete a handshake.
+    *   In the **'Respond'** section on the server, select the correct **color** and **port number** to send an **ACK** packet for a specific SYN request.
+    *   This will complete the handshake for that single connection.
