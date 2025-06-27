@@ -13,13 +13,16 @@
             stroke-width: 3px;
         }
 
-        body {
+        html, body {
+            width: 100vw;
+            height: 100vh;
             margin: 0;
             padding: 0;
             font-family: Avenir, Helvetica, Arial, sans-serif;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             background-color: #F9FAFE;
+            overflow: hidden;
         }
 
         * {
@@ -33,59 +36,171 @@
         #chart {
             flex: 6;
             background-color: white;
-            height: 800px;
-            overflow: scroll;
+            height: 100vh; /* Fill viewport height */
+            min-height: 400px;
+            width: 100%;
+            min-width: 300px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .flex-box {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: 800px;
+            align-items: stretch;
+            width: 100vw;
+            height: 100vh;
+            min-height: 600px;
             background-color: #f5f5f5;
+            overflow: hidden; /* Remove x scroll, ensure no scrollbars */
         }
 
         .control-panel {
             padding: 20px;
-            flex: 1;
+            flex: 0 0 340px;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            align-items: start;
-            width: 100%;
-            height: 800px;
+            justify-content: flex-start;
+            align-items: stretch;
+            width: 340px;
+            min-width: 320px;
+            max-width: 400px;
+            height: 100%; /* Fill viewport height */
             margin: auto;
-            overflow-y: scroll;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            overflow-y: auto;
+        }
+
+        #logs {
+            height: 100vh; /* Fill viewport height */
+            flex: 0 0 340px;
+            min-width: 320px;
+            max-width: 400px;
+            align-self: stretch;
+            background-color: #121212;
+            color: white;
+            font-family: "Lucida Console", Monaco, monospace;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: start;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #222;
+            overflow-y: auto;
+        }
+
+        .legend-box {
+            background: #fafcff;
+            border: 1px solid #d0e0e0;
+            border-radius: 6px;
+            padding: 10px 12px;
+            margin-top: 18px;
+            margin-bottom: 10px;
+        }
+
+        .legend-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .legend-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .circle {
+            margin-left: 0;
+            margin-right: 8px;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .circle.syn {
+            background-color: #0d1a6b;
+        }
+        .circle.synack {
+            background-color: #f44336;
+        }
+        .circle.ack {
+            background-color: #4caf50;
+        }
+
+        .expected-box {
+            background: #eafaf1;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+            padding: 10px 12px;
+            margin: 12px 0 18px 0;
+            font-size: 15px;
+        }
+        .expected-title {
+            font-weight: bold;
+            color: #222;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+
+        h2 {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            color: #222;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #111;
+            margin-bottom: 8px;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+        .section-content {
+            color: #444;
+            font-size: 15px;
+            margin-bottom: 18px;
+            margin-left: 2px;
+            margin-top: 2px;
+            line-height: 1.6;
+        }
+
+        label {
+            font-size: 15px;
+            margin-top: 10px;
+            margin-bottom: 2px;
+            color: #222;
         }
 
         input[type=number] {
             width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
+            padding: 10px 14px;
+            margin: 8px 0 12px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
+            font-size: 15px;
         }
 
         button {
             width: 100%;
             background-color: #4CAF50;
             color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
+            padding: 14px 0;
+            margin: 8px 0 18px 0;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-        }
-
-        button:disabled {
-            background-color: #BDBDBD;
-            color: #424242;
-            cursor: not-allowed;
-            transform: scale(1, 1);
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .flex {
@@ -105,19 +220,12 @@
             
         }
 
-        .circle {
-            margin-left: 10px;
-            height: 25px;
-            width: 25px;
-            border-radius: 50%;
-            display: inline-block;
-            background-color: #ff0008;
-        }
-
         #logs {
-            height: 100%;
-            flex: 1;
-            align-self: start;
+            height: 100vh; /* Fill viewport height */
+            flex: 0 0 340px;
+            min-width: 320px;
+            max-width: 400px;
+            align-self: stretch;
             background-color: #121212;
             color: white;
             font-family: "Lucida Console", Monaco, monospace;
@@ -126,6 +234,10 @@
             justify-content: flex-start;
             align-items: start;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 1px solid #222;
+            overflow-y: auto;
         }
 
         h3 {
@@ -140,8 +252,9 @@
             padding: 0;
             margin: 0;
             width: 100%;
-            height: 90vh;
-            overflow-y: scroll;
+            height: calc(100vh - 60px); /* Fill available height minus header */
+            overflow-y: auto;
+            overflow-x: hidden;
             color: white;
             background-color: #121212;
         }
@@ -162,12 +275,21 @@
 <div class="flex-box">
     <div class="control-panel">
         <h2>
-            Network Graph simulating a TCP SYN Attack
+            TCP SYN Flood Attack Simulation using network graph
         </h2>
         <div>
-            <h4>
-                Choose the number of clients and servers required and click on "Generate Graph" to generate the graph. Click on a client and a server to establish an attack from the client to the server.
-            </h4>
+            <div class="section-title">Aim</div>
+            <div class="section-content">
+                To visually demonstrate the TCP three-way handshake protocol and how SYN flood attacks exploit it to overwhelm a server.
+            </div>
+            <div class="section-title">Procedure</div>
+            <div class="section-content">
+                Choose the number of clients and servers required and click on "Generate Graph" to generate the graph. Click on a client and then a server to establish an attack from the client to the server.
+            </div>
+            <div class="expected-box">
+                <div class="expected-title">Expected Outcome:</div>
+                Observe packets in order (SYN → SYN-ACK → ACK) by their legend colors. Logs will display each protocol step. When a SYN flood occurs, the server will be overwhelmed and a message indicating the server is down will be displayed in the log section.
+            </div>
             <label>Number of Servers</label>
             <input type="number" id="countServer" name="count" min="1" max="50" value="1">
             <label>Number of Clients</label>
@@ -175,15 +297,17 @@
 
             <button onclick="init()" id="button">Generate Graph</button>
 
+            <div class="legend-box">
+                <div class="legend-row"><span class="circle syn"></span> <span>SYN packet</span></div>
+                <div class="legend-row"><span class="circle synack"></span> <span>SYN-ACK packet</span></div>
+                <div class="legend-row"><span class="circle ack"></span> <span>ACK packet</span></div>
+            </div>
+
             <span class="attack-info">Attacking client: </span>
             <span id="client-id"></span>
             <br>
             <span class="attack-info">Target server: </span>
             <span id="server-id"></span>
-
-            <div class="flex">
-                <span>Attack packet: </span> <span class="circle blue"></span>
-            </div>
         </div>
     </div>
     <div id="chart"></div>
@@ -225,41 +349,47 @@
 
     function addServer() {
         nodes.push({
-            id: "server" + serverCountCreated,
+            id: "server" + (serverCountCreated + 1),
             type: "server",
             icon: "server.svg",
             isClicked: false,
             isServerDown: false
         })
-        links.push({source: "server" + serverCountCreated, target: "gateway", color: "#8a8ac2"})
+        links.push({source: "server" + (serverCountCreated + 1), target: "gateway", color: "#8a8ac2"})
         serverCountCreated++
     }
 
     function addClient() {
         nodes.push({
-            id: "client" + clientCountCreated,
+            id: "client" + (clientCountCreated + 1),
             type: "client",
             icon: "workstation.svg",
             isClicked: false,
             isLineOccupied: false
         })
-        links.push({source: "client" + clientCountCreated, target: "gateway", color: "#8a8ac2"})
+        links.push({source: "client" + (clientCountCreated + 1), target: "gateway", color: "#8a8ac2"})
         clientCountCreated++
     }
 
     function init() {
-
-        if (isSimulationInitialized) {
-            return
-        }
+        // Always allow graph regeneration
+        // Clear previous graph and state
+        d3.select("#chart").selectAll("svg").remove();
+        nodes = [];
+        links = [];
+        serverCountCreated = 0;
+        clientCountCreated = 0;
+        isSimulationInitialized = false;
+        document.getElementById("client-id").innerHTML = "";
+        document.getElementById("server-id").innerHTML = "";
+        let logList = document.getElementById("log-list");
+        logList.innerHTML = "";
 
         let serverCount = document.getElementById("countServer").value
         serverCount = parseInt(serverCount)
 
         let attackingClient = null
         let targetServer = null
-
-        let logList = document.getElementById("log-list")
 
         if (isNaN(serverCount)) {
             logList.innerHTML += "<li>Invalid input</li>"
@@ -288,24 +418,21 @@
             return
         }
 
-        //TODO: Include client, click on client and then target server to attack
-
         addClientWrapper(parseInt(clientCount))
         addServerWrapper(parseInt(serverCount))
 
         isSimulationInitialized = true
-        //append log that graph has been generated
         logList.innerHTML += "<li>Graph has been generated</li>"
         logList.scrollTo(0, logList.scrollHeight * 100)
+        document.getElementById("button").disabled = false;
 
-        document.getElementById("button").disabled = true;
-        
+        // Get chart area size for centering
+        let chartDiv = document.getElementById("chart");
+        let width = chartDiv.offsetWidth || 1000;
+        let height = chartDiv.offsetHeight || 800;
 
-        //match width and height to the size of the container
-        let width = 1000
-        let height = 800
-
-        nodes.push({id: "gateway", type: "gateway", icon: "router.svg"})
+        // Place gateway in the exact center
+        nodes.push({id: "gateway", type: "gateway", icon: "router.svg", x: width/2, y: height/2});
 
         let svg = d3.select("#chart")
             .append("svg")
@@ -322,7 +449,7 @@
         let simulation = d3.forceSimulation(nodes)
             .force("link", linkForce)
             .force("charge", d3.forceManyBody().strength(-1000))
-            .force("center", d3.forceCenter(500, 400))
+            .force("center", d3.forceCenter(width/2, height/2))
             .force("y", d3.forceY().y(function (d) {
                 if (d.type === "server") {
                     return height / 7;
@@ -437,15 +564,15 @@
         node.on("click", function (d) {
             let data = d.srcElement.__data__
             if (data.type === "client") {
-                logList.innerHTML += '<li>Attack client <span style="color: red"> client ' + data.id + '</span></li> has been chosen</li>';
+                logList.innerHTML += '<li>Attack client <span style="color: red"> client ' + data.id.replace('client','') + '</span> has been chosen</li>';
                 logList.scrollTo(0, logList.scrollHeight * 100)
                 attackingClient = data.id;
-                document.getElementById("client-id").innerHTML = attackingClient;
+                document.getElementById("client-id").innerHTML = data.id.replace('client','');
             } else if (data.type === "server") {
-                logList.innerHTML += '<li>Target server <span style="color: red"> server ' + data.id + '</span></li> has been chosen</li>';
+                logList.innerHTML += '<li>Target <span style="color: white">server </span><span style="color: red">server ' + data.id.replace('server','') + '</span> has been chosen</li>';
                 logList.scrollTo(0, logList.scrollHeight * 100)
                 targetServer = data.id;
-                document.getElementById("server-id").innerHTML = targetServer;
+                document.getElementById("server-id").innerHTML = data.id.replace('server','');
             }
 
             if (attackingClient !== null && targetServer !== null) {
@@ -467,6 +594,9 @@
                     clientNode.isClicked = true;
                     serverNode.isClicked = true;
 
+                    // Always display attacking client and target server in control panel
+                    document.getElementById("client-id").innerHTML = clientNode.id.replace('client','');
+                    document.getElementById("server-id").innerHTML = serverNode.id.replace('server','');
 
                     attackingClient = null;
                     targetServer = null;
@@ -487,7 +617,7 @@
                     }
 
                     setTimeout(function () {
-                        logList.innerHTML += '<li>Server <span style="color: red"> server ' + serverNode.id + '</span> is down</li>';
+                        logList.innerHTML += '<li><b>Server ' + serverNode.id.replace('server','') + ' is down.</b></li>';
                         logList.scrollTo(0, logList.scrollHeight * 100)
                         serverNode.isServerDown = true;
                         clientNode.isLineOccupied = true;
@@ -513,7 +643,7 @@
 
 
                 } else if (serverNode.isServerDown === true) {
-                    logList.innerHTML += '<li>Server <span style="color: red"> server ' + serverNode.id + '</span> is already down, cannot send more packets as all ports are exhausted</li>';
+                    logList.innerHTML += '<li><b>Server ' + serverNode.id.replace('server','') + ' is already down, cannot send more packets as all ports are exhausted.</b></li>';
                     logList.scrollTo(0, logList.scrollHeight * 100)
                 } else if (clientNode.isLineOccupied === true) {
                     logList.innerHTML += '<li>The ports used by <span style="color: red"> ' + clientNode.id + '</span> is already being used</li>';
@@ -526,69 +656,198 @@
         })
 
         function twoOfThreeWayHandshake(clientData, serverData, iteration) {
-            movePacket("client", "gateway", clientData.id, true);
-            logList.innerHTML += '<li>Packet ' + iteration + ' sent from <span style="color: #8a8ac2"> client </span> to <span style="color: #8a8ac2"> gateway </span></li>';
+            // Generate random SYN and ACK numbers for this handshake
+            const synNum = Math.floor(Math.random() * 100000);
+            const ackNum = synNum + 1;
+            // 1. Client sends SYN (blue)
+            movePacketWithLabel("client", "gateway", clientData.id, true, `SYN=${synNum}`, "syn");
+            logList.innerHTML += `<li>Packet ${iteration} sent from <span style=\"color: #8a8ac2\">Client ${clientData.id.replace('client','')}</span> to <span style=\"color: #8a8ac2\">gateway</span> <b>[SYN=${synNum}]</b></li>`;
             logList.scrollTo(0, logList.scrollHeight * 100)
             setTimeout(function () {
-                movePacket("server", "gateway", serverData.id, false);
+                // 2. Server sends SYN-ACK (red)
+                movePacketWithLabel("server", "gateway", serverData.id, false, `SYN=${ackNum} ACK=${synNum+1}`, "synack");
                 setTimeout(function () {
-                    logList.innerHTML += '<li>Packet reached <span style="color: #8a8ac2"> server, </span> sending packet back to <span style="color: #8a8ac2"> client </span></li>';
+                    logList.innerHTML += `<li>Packet reached <span style=\"color: #8a8ac2\">server ${serverData.id.replace('server','')}</span>, sending packet back to <span style=\"color: #8a8ac2\">client ${clientData.id.replace('client','')}</span> <b>[SYN=${ackNum} ACK=${synNum+1}]</b></li>`;
                     logList.scrollTo(0, logList.scrollHeight * 100)
-                    movePacket("server", "gateway", serverData.id, true);
+                    // 3. Client sends ACK (green)
+                    movePacketWithLabel("server", "gateway", serverData.id, true, `ACK=${ackNum+1}`, "ack");
                     setTimeout(function () {
-                        movePacket("client", "gateway", clientData.id, false);
-                        logList.innerHTML += '<li>Aborting three-way handshake number ' + iteration + '</li> to keep port open with <span style="color: red"> server ' + serverData.id + '</span></li>';
+                        movePacketWithLabel("client", "gateway", clientData.id, false, `ACK=${ackNum+1}`, "ack");
+                        logList.innerHTML += `<li>Aborting three-way handshake number ${iteration} to keep port open with <span style=\"color: red\">server ${serverData.id.replace('server','')}</span></li>`;
                         logList.scrollTo(0, logList.scrollHeight * 100)
-                    }, 800)
-                }, 800);
-
-            }, 800);
+                    }, 1000)
+                }, 1000);
+            }, 1000);
         }
 
-        function movePacket(sourceType, targetType, id, isSourceToTarget) {
+        // Move packet with color and label
+        function movePacketWithLabel(sourceType, targetType, id, isSourceToTarget, label, colorClass) {
             let destination;
-            console.log("Moving packet from " + sourceType + " to " + targetType + " with id " + id + "")
-            let packet = svg.append("g")
-                .attr("class", "packet")
-                .selectAll("circle")
+            let colorMap = { syn: "#2196f3", synack: "#f44336", ack: "#4caf50", data: "#ffb300" };
+            let packetGroup = svg.append("g")
+                .attr("class", "packet");
+            let packet = packetGroup
+                .selectAll("rect")
+                .data(links.filter(function (d) {
+                    return d.source.type === sourceType && d.target.type === targetType && d.source.id === id;
+                }))
+                .enter();
+            let rect = packet.append("rect")
+                .attr("width", 70)
+                .attr("height", 44)
+                .attr("rx", 12)
+                .attr("ry", 12)
+                .style("fill", colorMap[colorClass] || "#ff0000")
+                .attr("x", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.source.type === sourceType) {
+                            destination = d.destination;
+                            return d.source.x - 35;
+                        }
+                    } else {
+                        if (d.target.type === targetType) {
+                            destination = d.destination;
+                            return d.target.x - 35;
+                        }
+                    }
+                })
+                .attr("y", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.source.type === sourceType) {
+                            return d.source.y - 22;
+                        }
+                    } else {
+                        if (d.target.type === targetType) {
+                            return d.target.y - 22;
+                        }
+                    }
+                });
+
+            // Split label into two lines: first line is protocol, second is number
+            // For SYN: label = "SYN=12345" => line1: "SYN", line2: "12345" or "=12345"
+            // For SYN/ACK: label = "SYN=12345 ACK=12346" => line1: "SYN/ACK", line2: "12345/12346" or "SYN=... ACK=..."
+            // For ACK: label = "ACK=12346" => line1: "ACK", line2: "12346" or "=12346"
+            let line1 = "";
+            let line2 = "";
+            if (colorClass === "syn") {
+                line1 = "SYN";
+                line2 = label.replace("SYN=", "");
+            } else if (colorClass === "synack") {
+                line1 = "SYN/ACK";
+                // Try to extract numbers from label
+                let synMatch = label.match(/SYN=(\d+)/);
+                let ackMatch = label.match(/ACK=(\d+)/);
+                if (synMatch && ackMatch) {
+                    line2 = ackMatch[1]; // Only the number, no 'Port:'
+                } else {
+                    line2 = label;
+                }
+            } else if (colorClass === "ack") {
+                line1 = "ACK";
+                line2 = label.replace("ACK=", "");
+            } else {
+                line1 = label;
+                line2 = "";
+            }
+
+            // Add first line (protocol)
+            let text1 = packetGroup.selectAll(".packet-label1")
                 .data(links.filter(function (d) {
                     return d.source.type === sourceType && d.target.type === targetType && d.source.id === id;
                 }))
                 .enter()
-                .append("circle")
-                .attr("r", 5)
-                .style("fill", "#ff0000")
-                .attr("cx", function (d) {
+                .append("text")
+                .attr("class", "packet-label1")
+                .text(line1)
+                .attr("font-size", "13px")
+                .attr("font-weight", "bold")
+                .attr("fill", "#111")
+                .attr("text-anchor", "middle")
+                .attr("x", function (d) {
                     if (isSourceToTarget) {
                         if (d.source.type === sourceType) {
-                            destination = d.destination;
                             return d.source.x;
                         }
                     } else {
                         if (d.target.type === targetType) {
-                            destination = d.destination;
                             return d.target.x;
                         }
                     }
-
                 })
-                .attr("cy", function (d) {
+                .attr("y", function (d) {
                     if (isSourceToTarget) {
                         if (d.source.type === sourceType) {
-                            return d.source.y;
+                            return d.source.y - 4;
                         }
                     } else {
                         if (d.target.type === targetType) {
-                            return d.target.y;
+                            return d.target.y - 4;
                         }
                     }
-
+                });
+            // Add second line (number)
+            let text2 = packetGroup.selectAll(".packet-label2")
+                .data(links.filter(function (d) {
+                    return d.source.type === sourceType && d.target.type === targetType && d.source.id === id;
+                }))
+                .enter()
+                .append("text")
+                .attr("class", "packet-label2")
+                .text(line2)
+                .attr("font-size", "13px")
+                .attr("fill", "#111")
+                .attr("text-anchor", "middle")
+                .attr("x", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.source.type === sourceType) {
+                            return d.source.x;
+                        }
+                    } else {
+                        if (d.target.type === targetType) {
+                            return d.target.x;
+                        }
+                    }
                 })
+                .attr("y", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.source.type === sourceType) {
+                            return d.source.y + 14;
+                        }
+                    } else {
+                        if (d.target.type === targetType) {
+                            return d.target.y + 14;
+                        }
+                    }
+                });
 
-            packet
-                .transition()
-                .duration(800)
-                .attr("cx", function (d) {
+            // Animate both rect and text
+            rect.transition()
+                .duration(4000)
+                .attr("x", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.target.type === targetType) {
+                            return d.target.x - 35;
+                        }
+                    } else {
+                        if (d.source.type === sourceType) {
+                            return d.source.x - 35;
+                        }
+                    }
+                })
+                .attr("y", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.target.type === targetType) {
+                            return d.target.y - 22;
+                        }
+                    } else {
+                        if (d.source.type === sourceType) {
+                            return d.source.y - 22;
+                        }
+                    }
+                });
+            text1.transition()
+                .duration(4000)
+                .attr("x", function (d) {
                     if (isSourceToTarget) {
                         if (d.target.type === targetType) {
                             return d.target.x;
@@ -598,29 +857,46 @@
                             return d.source.x;
                         }
                     }
-
                 })
-                .attr("cy", function (d) {
+                .attr("y", function (d) {
                     if (isSourceToTarget) {
                         if (d.target.type === targetType) {
-                            return d.target.y;
+                            return d.target.y - 4;
                         }
                     } else {
                         if (d.source.type === sourceType) {
-                            return d.source.y;
+                            return d.source.y - 4;
+                        }
+                    }
+                });
+            text2.transition()
+                .duration(4000)
+                .attr("x", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.target.type === targetType) {
+                            return d.target.x;
+                        }
+                    } else {
+                        if (d.source.type === sourceType) {
+                            return d.source.x;
                         }
                     }
                 })
-
+                .attr("y", function (d) {
+                    if (isSourceToTarget) {
+                        if (d.target.type === targetType) {
+                            return d.target.y + 14;
+                        }
+                    } else {
+                        if (d.source.type === sourceType) {
+                            return d.source.y + 14;
+                        }
+                    }
+                });
             setTimeout(function () {
-                packet
-                    .filter(function (d) {
-                        return d.source.id === id;
-                    })
-                    .remove();
-            }, 800)
-
-            return destination
+                packetGroup.remove();
+            }, 4000);
+            return destination;
         }
 
         //animate the packet from client to gateway
