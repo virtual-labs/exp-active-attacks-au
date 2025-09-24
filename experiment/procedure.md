@@ -1,4 +1,4 @@
-### Procedure
+
 
 The following steps outline the procedure for simulating a TCP SYN Flood attack:
 
