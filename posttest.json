@@ -1,0 +1,82 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "Which of the following statements is true about combining passive and active attacks? ",
+      "answers": {
+        "a": "Passive attacks are less dangerous than active attacks",
+        "b": "Active attacks are less detectable than passive attacks.",
+        "c": "Combining passive and active attacks can increase the success rate of an attack.",
+        "d": "Combining passive and active attacks can only be done by expert hackers."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following best describes combining active and passive attacks in an ongoing computer in a network? ",
+      "answers": {
+        "a": "Eavesdropping on network traffic",
+        "b": "Installing malware on a system",
+        "c": "Modifying data in transit",
+        "d": "Scanning for open ports"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is a type of replay attack?",
+      "answers": {
+        "a": "Brute-force attack",
+        "b": "SQL Injection",
+        "c": "DNS Spoofing",
+        "d": "Session hijacking"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the primary purpose of a TCP SYN Flood attack?",
+      "answers": {
+        "a": "To steal sensitive information from a target server",
+        "b": "To establish a connection with the target server",
+        "c": "To exhaust the server's resources by flooding it with incomplete connections",
+        "d": "To encrypt the data transmitted between the client and server"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is true about a TCP SYN Flood attack?",
+      "answers": {
+        "a": "It causes the target server to crash by consuming all its memory",
+        "b": "It only affects the application layer of the OSI model",
+        "c": "It causes the target server to exhaust its half-open connections, preventing legitimate users from connecting",
+        "d": "It involves sending data packets with malicious content to exploit the target server"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which layer of the OSI model is affected by a TCP SYN Flood attack?",
+      "answers": {
+        "a": "Application Layer",
+        "b": "Transport Layer",
+        "c": "Network Layer",
+        "d": "Data Link Layer"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "During a TCP SYN Flood attack, what does the server expect after sending a SYN-ACK response?",
+      "answers": {
+        "a": "A confirmation from the attacker's IP",
+        "b": "An ACK packet from the client to complete the three-way handshake",
+        "c": "A data packet to establish the connection",
+        "d": "A SYN packet to initiate another connection attempt"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}
